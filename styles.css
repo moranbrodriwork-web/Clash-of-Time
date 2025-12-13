@@ -174,6 +174,7 @@ main {
 }
 
 .content-block h3 {
+  text-align: center;
   color: var(--mint);
 }
 
@@ -184,8 +185,12 @@ main {
 /* ───────────── FOOTER ───────────── */
 
 .footer {
-  padding: 2rem clamp(1.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 1rem clamp(1.5rem, 5vw, 4rem);
   background: var(--blue-soft);
   color: rgba(255, 255, 255, 0.65);
+}
+.footer div:nth-child(2) {
   text-align: center;
 }
