@@ -1,13 +1,13 @@
 :root {
-  --blue-soft: #8ec5ff;
-  --blue-deep: #1f4f81;
-  --mint: #a3f2cf;
-  --gray-light: #f4f6f8;
-  --gray: #cad3dd;
+  --blue-soft: #1f3b5a;
+  --mint: #4dd6a3;
+  --gray-light: #0f141a;
+  --gray: #27323d;
   --accent-warm: #f4b662;
-  --cream: #fffdf8;
-  --text-dark: #0f1a24;
-  --text-muted: #4a5c6b;
+  --cream: #151c23;
+  --text-dark: #e6edf3;
+  --text-muted: #9fb0c0;
+
   font-size: 16px;
   font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 }
@@ -31,6 +31,7 @@ h2,
 h3 {
   margin: 0 0 0.5em;
   line-height: 1.2;
+  color: var(--text-dark);
 }
 
 p {
@@ -38,25 +39,29 @@ p {
   color: var(--text-muted);
 }
 
+/* ───────────── HERO ───────────── */
+
 .hero {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  padding: 4rem clamp(1.5rem, 5vw, 5rem);
-  background: linear-gradient(
-    135deg,
-    var(--blue-soft),
-    var(--blue-deep)
-  );
+  padding: 2rem clamp(1.5rem, 5vw, 5rem);
+  background-color: var(--blue-soft);
   color: white;
   align-items: center;
+}
+
+.hero__content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .hero__content .eyebrow {
   font-size: 0.95rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .hero__content h1 {
@@ -64,19 +69,12 @@ p {
 }
 
 .hero__content .lead {
+  text-align: center;
   max-width: 520px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.hero__visual {
-  min-height: 220px;
-  border: 2px dashed rgba(255, 255, 255, 0.7);
-  border-radius: 24px;
-  display: grid;
-  place-items: center;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
+/* ───────────── CTA ───────────── */
 
 .cta {
   display: inline-flex;
@@ -85,11 +83,19 @@ p {
   padding: 0.8rem 1.4rem;
   border-radius: 999px;
   background: var(--mint);
-  color: var(--text-dark);
+  color: #062015;
   text-decoration: none;
   font-weight: 600;
   margin-top: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(77, 214, 163, 0.35);
+}
+
+/* ───────────── MAIN ───────────── */
 
 main {
   padding: clamp(1.5rem, 5vw, 4rem);
@@ -99,6 +105,8 @@ main {
 .section {
   margin-bottom: 2.5rem;
 }
+
+/* ───────────── CARDS ───────────── */
 
 .card-grid {
   display: grid;
@@ -111,8 +119,10 @@ main {
   border-radius: 20px;
   padding: 1.75rem;
   border: 1px solid var(--gray);
-  box-shadow: 0 10px 30px rgba(15, 26, 36, 0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
 }
+
+/* ───────────── IMAGES ───────────── */
 
 .photo-placeholder {
   width: 100%;
@@ -126,6 +136,8 @@ main {
   padding: 1rem;
 }
 
+/* ───────────── NAV TABS ───────────── */
+
 .nav-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -138,7 +150,7 @@ main {
   text-align: center;
   padding: 0.9rem 1rem;
   border-radius: 12px;
-  background: white;
+  background: var(--cream);
   border: 1px solid var(--gray);
   color: var(--text-dark);
   font-weight: 600;
@@ -149,28 +161,31 @@ main {
 .nav-tabs a:hover {
   transform: translateY(-2px);
   background: var(--mint);
+  color: #062015;
 }
 
+/* ───────────── CONTENT BLOCK ───────────── */
+
 .content-block {
-  background: white;
+  background: var(--cream);
   border-radius: 16px;
   padding: 1.5rem;
   border: 1px solid var(--gray);
 }
 
 .content-block h3 {
-  color: var(--blue-deep);
+  color: var(--mint);
 }
 
 .content-block p {
   color: var(--text-muted);
 }
 
+/* ───────────── FOOTER ───────────── */
+
 .footer {
   padding: 2rem clamp(1.5rem, 5vw, 4rem);
-  background: var(--blue-deep);
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--blue-soft);
+  color: rgba(255, 255, 255, 0.65);
   text-align: center;
 }
-
-
