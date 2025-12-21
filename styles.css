@@ -15,6 +15,43 @@
   font-weight: 400;
 }
 
+/* Estilos para impresión */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .indice-lista a {
+    color: black;
+  }
+}
+
 /* ───────────── RESET BÁSICO Y TIPOGRAFÍA ───────────── */
 
 *,
@@ -30,6 +67,13 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
 }
 
 h1,
@@ -57,52 +101,94 @@ a {
 main {
   padding: clamp(2rem, 6vw, 5rem);
   background: var(--gray-light);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media print {
+  main {
+    padding: 1rem;
+    background: white;
+  }
 }
 
 .section {
   margin-bottom: 4rem;
 }
 
-/* ───────────── HERO (HEADER) ───────────── */
+@media print {
+  .section {
+    margin-bottom: 2rem;
+  }
+}
 
-.hero {
-  padding: 4rem clamp(2rem, 5vw, 6rem);
-  background-color: var(--blue-soft);
-  color: white;
+/* ───────────── PORTADA ───────────── */
+
+.portada {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.titulo-principal {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 2rem;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.logo-container {
+  margin: 2rem 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  /* Efecto de degradado sutil en el fondo del hero */
-  background-image: linear-gradient(180deg, var(--blue-soft) 0%, #17314d 100%);
-  margin-bottom: -1rem;
 }
 
-.hero__content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 900px;
+.logo-representativo {
+  max-width: 300px;
+  height: auto;
+  display: block;
 }
 
-.hero__content .eyebrow {
-  font-size: 1rem;
-  letter-spacing: 0.2em; /* Más espacio entre letras */
-  text-transform: uppercase;
-  font-weight: 500;
+.portada-content {
+  margin-top: 3rem;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero__content h1 {
-  font-size: clamp(3rem, 7vw, 5rem); /* Título más grande */
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
+.portada-item {
+  margin-bottom: 2rem;
 }
 
-.hero__content .lead {
-  text-align: center;
-  max-width: 650px;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 1rem;
+.portada-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--mint);
+  font-weight: 600;
+}
+
+.portada-texto {
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+@media print {
+  .portada {
+    page-break-after: always;
+  }
+  
+  .titulo-principal {
+    color: black;
+  }
+  
+  .portada-item h3 {
+    color: black;
+  }
+  
+  .portada-texto {
+    color: black;
+  }
 }
 
 /* ───────────── GRID Y CARDS ───────────── */
@@ -141,47 +227,18 @@ main {
   border-radius: 10px;
   text-align: center;
   color: var(--text-muted);
-  overflow: visible;           /* IMPORTANTE: permite que el texto salga debajo */
-  transition: transform 0.3s ease-in-out;
-  background-color: #151c23;
+  padding: 1.5rem;
+  background-color: #12181f;
+  page-break-inside: avoid;
 }
 
-.photo-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease-in-out;
+@media print {
+  .photo-placeholder {
+    border-color: #ccc;
+    background-color: white;
+    color: black;
+  }
 }
-
-/* Hover: la tarjeta se agranda */
-.photo-placeholder:hover {
-  transform: scale(1.2);
-  z-index: 10;                 /* Se sobrepone sobre las demás */
-}
-
-/* Texto oculto por defecto */
-.card-text {
-  position: absolute;
-  bottom: -40px;               /* Aparece justo debajo de la imagen */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #008bf8;
-  color: #fff;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  opacity: 0;
-  transition: opacity 0.3s ease, bottom 0.3s ease;
-  white-space: nowrap;
-}
-
-/* Hover: muestra el texto debajo */
-.photo-placeholder:hover .card-text {
-  opacity: 1;
-  bottom: -10px;               /* Subimos un poco el texto al aparecer */
-}
-
 
 .content-block img {
     max-width: 100%;
@@ -194,43 +251,53 @@ main {
 }
 
 
-/* ───────────── NAV TABS ───────────── */
+/* ───────────── ÍNDICE ───────────── */
 
-.nav-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: center;
-  margin-bottom: 4rem;
+.indice {
+  page-break-after: always;
 }
 
-.nav-tabs a {
-  flex: 1 1 180px;
-  max-width: 250px;
-  text-align: center;
-  padding: 1.1rem 1.5rem;
-  border-radius: 14px;
-  background: var(--cream);
-  border: 1px solid var(--gray);
+.indice h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--text-dark);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.nav-tabs a:hover {
-  transform: translateY(-3px);
-  background: var(--mint);
-  color: var(--text-cta);
-  box-shadow: 0 6px 15px var(--shadow-glow);
+.indice-lista {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 2rem;
 }
 
-.nav-tabs a[aria-current="page"],
-.nav-tabs a.active {
-    background: var(--mint);
-    color: var(--text-cta);
-    border-color: var(--mint);
-    box-shadow: 0 0 15px var(--shadow-glow);
+.indice-lista li {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.indice-lista a {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.indice-lista a:hover {
+  color: var(--mint);
+  text-decoration: underline;
+}
+
+@media print {
+  .indice {
+    page-break-after: always;
+  }
+  
+  .indice h2 {
+    color: black;
+  }
+  
+  .indice-lista a {
+    color: black;
+  }
 }
 
 
@@ -242,37 +309,104 @@ main {
   padding: clamp(2rem, 5vw, 3.5rem);
   border: 1px solid var(--gray);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  page-break-inside: avoid;
+}
+
+.content-block h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--mint);
+  margin-bottom: 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--gray);
+  padding-bottom: 0.5em;
+  page-break-after: avoid;
 }
 
 .content-block h3 {
-  text-align: center;
   color: var(--mint);
-  margin-bottom: 1.5em;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border-bottom: 2px solid var(--gray);
-  padding-bottom: 0.5em;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 0.3em;
+  page-break-after: avoid;
+}
+
+.content-block ul,
+.content-block ol {
+  margin: 1em 0;
+  padding-left: 2rem;
+}
+
+.content-block li {
+  margin-bottom: 0.5em;
+  color: var(--text-muted);
+}
+
+.content-block strong {
+  color: var(--text-dark);
+}
+
+.media-section {
+  margin-top: 2rem;
+}
+
+.content-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5em auto;
+  display: block;
+  border: 1px solid var(--gray);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  page-break-inside: avoid;
+}
+
+.bibliografia {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+@media print {
+  .content-block {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  
+  .content-block h2,
+  .content-block h3 {
+    color: black;
+    border-bottom-color: #ccc;
+  }
+  
+  .content-block li,
+  .content-block p {
+    color: black;
+  }
+  
+  .content-block strong {
+    color: black;
+  }
+  
+  .bibliografia {
+    color: black;
+  }
+  
+  .content-image {
+    border-color: #ccc;
+    box-shadow: none;
+  }
 }
 
 /* ───────────── FOOTER ───────────── */
 
-.footer {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 1.5rem clamp(2rem, 5vw, 6rem);
-  background: var(--blue-soft);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-top: 1px solid var(--gray);
+@media print {
+  .footer {
+    display: none;
+  }
 }
-
-.footer small {
-    display: block;
-}
-
-.footer div:first-child { text-align: left; }
-.footer div:nth-child(2) { text-align: center; padding: 0 1rem; }
-.footer div:last-child { text-align: right; }
