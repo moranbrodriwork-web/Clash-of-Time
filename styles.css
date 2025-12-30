@@ -235,22 +235,51 @@ main {
 .photo-placeholder {
   position: relative;          /* Para que el texto absoluto se posicione bien */
   min-height: 280px;
-  border: 3px solid #165ea6;
-  border-radius: 10px;
+  border: 3px solid var(--mint);
+  border-radius: 12px;
   text-align: center;
   color: var(--text-muted);
-  padding: 1.5rem;
-  background-color: #12181f;
-  page-break-inside: avoid;
+  overflow: visible;           /* IMPORTANTE: permite que el texto salga debajo */
+  transition: transform 0.3s ease-in-out;
+  background-color: #151c23;
 }
 
-@media print {
-  .photo-placeholder {
-    border-color: #ccc;
-    background-color: white;
-    color: black;
-  }
+.photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
 }
+
+/* Hover: la tarjeta se agranda */
+.photo-placeholder:hover {
+  transform: scale(1.2);
+  z-index: 10;                 /* Se sobrepone sobre las demás */
+}
+
+/* Texto oculto por defecto */
+.card-text {
+  position: absolute;
+  bottom: -40px;               /* Aparece justo debajo de la imagen */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--mint);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, bottom 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Hover: muestra el texto debajo */
+.photo-placeholder:hover .card-text {
+  opacity: 1;
+  bottom: -10px;               /* Subimos un poco el texto al aparecer */
+}
+
 
 .content-block img {
     max-width: 100%;
