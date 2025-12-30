@@ -221,7 +221,9 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-bottom: 2rem;
-  background-color: #151c23;
+  background-color: var(--cream);
+  border: 1px solid var(--gray);
+  box-shadow: 0 8px 15px var(--shadow-dark);
   padding: 1rem 1.5rem;
   border-radius: 15px;
 }
