@@ -18,7 +18,7 @@ function toggleTheme() {
 function updateLogo(theme) {
   const logo = document.querySelector('.logo-representativo');
   if (logo) {
-    if (theme === 'light') {
+    if (theme !== 'dark') {
       logo.src = './assets/LogoClaro.png';
       logo.alt = 'Logo Clash of Time';
     } else {
@@ -32,7 +32,7 @@ function updateLogo(theme) {
 function updateThemeIcon(theme) {
   const themeIcon = document.querySelector('.theme-icon');
   if (themeIcon) {
-    themeIcon.textContent = theme === 'light' ? 'Dark' : 'Light';
+    themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
   }
 }
 
