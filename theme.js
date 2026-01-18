@@ -32,7 +32,7 @@ function updateLogo(theme) {
 function updateThemeIcon(theme) {
   const themeIcon = document.querySelector('.theme-icon');
   if (themeIcon) {
-    themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    themeIcon.textContent = theme === 'dark' ? '🔅' : '⏾';
   }
 }
 
